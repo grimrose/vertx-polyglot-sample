@@ -10,7 +10,7 @@ public class PublisherVerticle extends Verticle {
 
         final Logger logger = container.logger();
 
-        logger.info("Verticle started.");
+        logger.info("publisher started.");
 
         JsonObject message = new JsonObject();
         message.putString("question", "ちゃうちゃう？");
@@ -20,7 +20,7 @@ public class PublisherVerticle extends Verticle {
 
         vertx.eventBus().publish("localhost", message);
 
-        logger.info("Verticle Published.");
+        logger.info("publisher published.");
     }
 
 }

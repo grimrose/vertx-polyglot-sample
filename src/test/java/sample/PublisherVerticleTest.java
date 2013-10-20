@@ -14,7 +14,7 @@ import static org.vertx.testtools.VertxAssert.testComplete;
 public class PublisherVerticleTest extends TestVerticle {
 
     @Test
-    public void _expect_to_return_JSON_Object() throws Exception {
+    public void _expect_to_return_Json_Object() throws Exception {
         // Setup
         container.deployVerticle(PublisherVerticle.class.getName());
         // Verify
