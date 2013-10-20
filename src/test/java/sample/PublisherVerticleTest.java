@@ -19,6 +19,7 @@ public class PublisherVerticleTest extends TestVerticle {
         container.deployVerticle(PublisherVerticle.class.getName());
         // Verify
         vertx.eventBus().registerHandler("localhost", new Handler<Message<JsonObject>>() {
+
             @Override
             public void handle(Message<JsonObject> message) {
                 JsonObject body = message.body();
@@ -26,9 +27,13 @@ public class PublisherVerticleTest extends TestVerticle {
                 VertxAssert.assertThat(body.getString("question"), CoreMatchers.is("ちゃうちゃう？"));
                 VertxAssert.assertThat(body.getString("user"), CoreMatchers.is("Java"));
 
-                message.reply("received!");
+                JsonObject reply = new JsonObject();
+                reply.putString("message", "received!");
+                message.reply(reply);
+
                 testComplete();
             }
+
         });
 
     }

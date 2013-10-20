@@ -10,6 +10,7 @@ public class SubscriberVerticle extends Verticle {
 
     @Override
     public void start() {
+
         final Logger logger = container.logger();
 
         logger.info("subscriber started.");
@@ -21,7 +22,7 @@ public class SubscriberVerticle extends Verticle {
 
                 JsonObject question = message.body();
 
-                logger.info(question);
+                logger.info("received: " + question.toString());
 
                 JsonObject reply = new JsonObject();
 

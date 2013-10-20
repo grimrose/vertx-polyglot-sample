@@ -10,7 +10,6 @@ import org.vertx.testtools.VertxAssert;
 
 import static org.vertx.testtools.VertxAssert.testComplete;
 
-
 public class SubscriberVerticleTest extends TestVerticle {
 
     @Test

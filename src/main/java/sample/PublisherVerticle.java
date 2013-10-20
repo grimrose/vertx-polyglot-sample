@@ -1,5 +1,7 @@
 package sample;
 
+import org.vertx.java.core.Handler;
+import org.vertx.java.core.eventbus.Message;
 import org.vertx.java.core.json.JsonObject;
 import org.vertx.java.core.logging.Logger;
 import org.vertx.java.platform.Verticle;
@@ -16,9 +18,18 @@ public class PublisherVerticle extends Verticle {
         message.putString("question", "ちゃうちゃう？");
         message.putString("user", "Java");
 
-        logger.info(message);
+        logger.info("publish: " + message.toString());
 
-        vertx.eventBus().publish("localhost", message);
+        vertx.eventBus().send("localhost", message, new Handler<Message<JsonObject>>() {
+
+            @Override
+            public void handle(Message<JsonObject> message) {
+                JsonObject reply = message.body();
+                logger.info("reply: " + reply.toString());
+                logger.info("publisher received.");
+            }
+
+        });
 
         logger.info("publisher published.");
     }
