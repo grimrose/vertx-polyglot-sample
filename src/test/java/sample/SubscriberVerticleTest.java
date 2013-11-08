@@ -32,7 +32,7 @@ public class SubscriberVerticleTest extends TestVerticle {
                     public void handle(Message<JsonObject> received) {
                         JsonObject reply = received.body();
 
-                        container.logger().info(reply);
+                        container.logger().info("reply: " + reply);
 
                         VertxAssert.assertThat(reply.getString("subscriber"), CoreMatchers.is("Java"));
                         VertxAssert.assertThat(reply.getString("answer"), CoreMatchers.is("ちゃうちゃう"));

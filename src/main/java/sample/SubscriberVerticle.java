@@ -22,16 +22,18 @@ public class SubscriberVerticle extends Verticle {
 
                 JsonObject question = message.body();
 
-                logger.info("received: " + question.toString());
+                logger.info("subscriber received: " + question.toString());
 
                 JsonObject reply = new JsonObject();
 
                 reply.putString("subscriber", "Java");
                 reply.putObject("question", question);
                 reply.putString("answer", "ちゃうちゃう");
+
+                logger.info("subscriber reply: " + reply);
+
                 message.reply(reply);
 
-                logger.info("subscriber received.");
             }
         });
 
