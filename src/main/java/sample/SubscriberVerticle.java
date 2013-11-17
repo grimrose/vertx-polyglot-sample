@@ -6,6 +6,9 @@ import org.vertx.java.core.json.JsonObject;
 import org.vertx.java.core.logging.Logger;
 import org.vertx.java.platform.Verticle;
 
+import java.text.MessageFormat;
+import java.util.Date;
+
 public class SubscriberVerticle extends Verticle {
 
     @Override
@@ -19,6 +22,8 @@ public class SubscriberVerticle extends Verticle {
 
             @Override
             public void handle(Message<JsonObject> message) {
+
+                logger.info(MessageFormat.format("subscriber message received at {0}", new Date()));
 
                 JsonObject question = message.body();
 
@@ -38,4 +43,5 @@ public class SubscriberVerticle extends Verticle {
         });
 
     }
+
 }
